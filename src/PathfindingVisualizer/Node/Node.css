@@ -7,11 +7,11 @@
 }
 
 .node-finish {
-  background-color: red;
+  background-color: #fd7f7f;
 }
 
 .node-start {
-  background-color: green;
+  background-color: #77DD77;
 }
 
 .node-visited {
@@ -33,17 +33,17 @@
   }
 
   50% {
-    background-color: #a7adba;
+    background-color: #ffb8b8;
   }
 
   75% {
     transform: scale(1.2);
-    background-color: #65737e;
+    background-color: #ffc0ab;
   }
 
   100% {
     transform: scale(1);
-    background-color: #4f5b66;
+    background-color: #ffcd9a;
   }
 }
 
@@ -65,17 +65,16 @@
 @keyframes shortestPath {
   0% {
     transform: scale(0.6);
-    background-color: #65737e
-    ;
+    background-color: #ffcd9a;
   }
 
   50% {
     transform: scale(1.2);
-    background-color: #343d46;
+    background-color: #ffd6ab;
   }
 
   100% {
     transform: scale(1);
-    background-color: black;
+    background-color: #ffc0ab;
   }
 }

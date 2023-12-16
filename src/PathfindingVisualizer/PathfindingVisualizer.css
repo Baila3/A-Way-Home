@@ -1,4 +1,3 @@
-
 .grid {
   margin: 0 0 .5em;
 }
@@ -12,48 +11,52 @@
 
 .labelStartY {
   margin-right: 0.3em;
-  color: green;
+  color: #77DD77;
 }
+
 .labelStartX {
   margin-right: 0.3em;
-  color: green;
+  color: #77DD77;
 }
 
-.labelX{
-  color: red;
+.labelX {
+  color: #fd7f7f;
 }
-.labelY{
-  color: red;
+
+.labelY {
+  color: #fd7f7f;
 }
 
 
-input{
+input {
   margin-left: 0.3em;
   border-radius: 0.5em;
 }
 
-.buttons{
+.buttons {
   display: flex;
-  justify-content: space-between;
-  padding-bottom: .1em;
+  justify-content: space-around;
+  padding-bottom: -1.5em;
+  /* margin-top: -0.7em; */
 }
 
-.viz{
+.viz {
   cursor: pointer;
   color: white;
   border-color: white;
-  background-color: #a6a6a6;
+  background-color: #ffc0ab;
   border-radius: 0.5em;
   height: 3em;
   margin-top: 1.5em;
   margin-right: 1em;
   border: 0.1em solid white;
 }
+
 .viz:hover {
-  color: #a6a6a6;
+  color: #ffc0ab;
   background-color: white;
-  border-top: 0.1em solid #a6a6a6;
-  border-left: 0.1em solid #a6a6a6;
+  border-top: 0.1em solid #ffc0ab;
+  border-left: 0.1em solid #ffc0ab;
 }
 
 .reload {
@@ -61,58 +64,61 @@ input{
   cursor: pointer;
   border-color: white;
   color: white;
-  background-color: #a6a6a6;
+  background-color: #ffc0ab;
   border-radius: 0.5em;
   height: 3em;
   margin-top: 1.5em;
   margin-right: 1.5em;
 }
+
 .reload:hover {
-  color: #a6a6a6;
+  color: #ffc0ab;
   background-color: white;
-  border-top: 0.1em solid #a6a6a6;
-  border-left: 0.1em solid #a6a6a6;
+  border-top: 0.1em solid #ffc0ab;
+  border-left: 0.1em solid #ffc0ab;
 }
 
 .Nav {
-  background-color: #a6a6a6;
+  background-color: #ffc0ab;
+  margin-bottom: -0.7em;
 }
 
-#myStartInputX{
-  color: green;
-  border-color: green;
+#myStartInputX {
+  color: #77DD77;
+  border-color: #77DD77;
 }
 
-#myStartInputY{
-  color: green;
-  border-color: green;
+#myStartInputY {
+  color: #77DD77;
+  border-color: #77DD77;
 }
 
 #myEndInputX {
-  color: red;
-  border-color: red;
-}
-#myEndInputY {
-  color: red;
-  border-color: red;
+  color: #fd7f7f;
+  border-color: #fd7f7f;
 }
 
-.startAxis{
+#myEndInputY {
+  color: #fd7f7f;
+  border-color: #fd7f7f;
+}
+
+.startAxis {
   display: flex;
   flex-direction: row;
   width: 9%;
 }
+
 .endAxis {
   display: flex;
   flex-direction: row
-
 }
 
-form{
+form {
   margin: 0.3em 0em 0.3em;
 }
 
-img{
+img {
   margin-top: .3em;
   margin-left: 1em;
 }
@@ -122,50 +128,52 @@ img{
 }
 
 #myStartInputX:disabled {
-  background-color: green;
+  background-color: #ffc0ab;
   color: linen;
   opacity: 1;
 }
 
 #myStartInputY:disabled {
-  background-color: green;
+  background-color: #ffc0ab;
   color: linen;
   opacity: 1;
 }
 
 #myEndInputX:disabled {
-  background-color: red;
+  background-color: #ffc0ab;
   color: linen;
   opacity: 1;
 }
 
 #myEndInputY:disabled {
-  background-color: red;
+  background-color: #ffc0ab;
   color: linen;
   opacity: 1;
 }
 
-#myEndInputY:disabled::-webkit-input-placeholder  {
-  color: red;
+#myEndInputY:disabled::-webkit-input-placeholder {
+  color: #fd7f7f;
 }
 
-#myEndInputX:disabled::-webkit-input-placeholder  {
-  color: red;
+#myEndInputX:disabled::-webkit-input-placeholder {
+  color: #fd7f7f;
 }
 
-#myStartInputY:disabled::-webkit-input-placeholder  {
-  color: green;
+#myStartInputY:disabled::-webkit-input-placeholder {
+  color: #77DD77;
 }
 
-#myStartInputX:disabled::-webkit-input-placeholder  {
-  color: green;
+#myStartInputX:disabled::-webkit-input-placeholder {
+  color: #77DD77;
 }
 
 .tooltip {
   position: relative;
   display: inline-block;
   content: "\0021";
-  color:linen; 
+  color: linen;
+  margin-top: 1.5em;
+  margin-right: 1.5em;
 }
 
 

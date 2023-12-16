@@ -1,8 +1,9 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import Node from './Node/Node';
-import {dijkstra, getNodesInShortestPathOrder} from '../algorithms/dijkstra';
+import { dijkstra, getNodesInShortestPathOrder } from '../algorithms/dijkstra';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCoffee, faExclamationCircle } from '@fortawesome/free-solid-svg-icons';
+import logo from '../docs/Logs1.png';
 
 
 import './PathfindingVisualizer.css';
@@ -15,36 +16,36 @@ export default class PathfindingVisualizer extends Component {
       grid: [],
       mouseIsPressed: false,
       startNodeY: 0,
-      startNodeX:0,
+      startNodeX: 0,
       endNodeY: 19,
       endNodeX: 49,
       isDisabled: false
     }
     this.handleChange = this.handleChange.bind(this);
     createNode = createNode.bind(this);
-    this.visualizeDijkstra = this.visualizeDijkstra.bind(this)
-    this.handleEndChange = this.handleEndChange.bind(this)  
+    this.visualizeDijkstra = this.visualizeDijkstra.bind(this);
+    this.handleEndChange = this.handleEndChange.bind(this);
   }
 
 
   componentDidMount() {
     const grid = getInitialGrid();
-    this.setState({grid});
+    this.setState({ grid });
   }
 
   handleMouseDown(row, col) {
     const newGrid = getNewGridWithWallToggled(this.state.grid, row, col);
-    this.setState({grid: newGrid, mouseIsPressed: true});
+    this.setState({ grid: newGrid, mouseIsPressed: true });
   }
 
   handleMouseEnter(row, col) {
     if (!this.state.mouseIsPressed) return;
     const newGrid = getNewGridWithWallToggled(this.state.grid, row, col);
-    this.setState({grid: newGrid});
+    this.setState({ grid: newGrid });
   }
 
   handleMouseUp() {
-    this.setState({mouseIsPressed: false});
+    this.setState({ mouseIsPressed: false });
   }
 
   animateDijkstra(visitedNodesInOrder, nodesInShortestPathOrder) {
@@ -77,16 +78,16 @@ export default class PathfindingVisualizer extends Component {
     let startPutX = Math.round(Number(document.getElementById("myStartInputX").value));
     let startPutY = Math.round(Number((document.getElementById("myStartInputY").value)));
 
-    if ( isNaN(startPutX) === true || startPutX > 49 || startPutX < 0) {
-       startPutX = 0;
+    if (isNaN(startPutX) === true || startPutX > 49 || startPutX < 0) {
+      startPutX = 0;
     }
-    if ( isNaN(startPutY) === true || startPutY > 19 || startPutY < 0) {
-       startPutY = 0;
+    if (isNaN(startPutY) === true || startPutY > 19 || startPutY < 0) {
+      startPutY = 0;
     }
-    const {grid} = this.state
-    this.setState({startNodeY: startPutY, startNodeX: startPutX}, () =>
+    const { grid } = this.state
+    this.setState({ startNodeY: startPutY, startNodeX: startPutX }, () =>
       grid[this.state.startNodeY][this.state.startNodeX].isStart = true &&
-      this.setState({grid: getInitialGrid()}) &&
+      this.setState({ grid: getInitialGrid() }) &&
       console.log(this.state.endNodeY)
     )
   }
@@ -97,88 +98,88 @@ export default class PathfindingVisualizer extends Component {
     let endPutX = Math.round(Number((document.getElementById("myEndInputX").value)));
     let endPutY = Math.round(Number((document.getElementById("myEndInputY").value)));
     console.log(endPutY)
-    
+
     if (endPutX > 49 || endPutX < 0) {
-       endPutX = 49;
+      endPutX = 49;
     }
-    if ( endPutY > 19 || endPutY < 0) {
+    if (endPutY > 19 || endPutY < 0) {
       endPutY = 19;
     }
-    const {grid} = this.state
-    this.setState({endNodeY: endPutY, endNodeX: endPutX}, () =>
+    const { grid } = this.state
+    this.setState({ endNodeY: endPutY, endNodeX: endPutX }, () =>
       grid[this.state.endNodeY][this.state.endNodeX].isFinish = true &&
-      this.setState({grid: getInitialGrid()})
+      this.setState({ grid: getInitialGrid() })
     )
   }
 
-  
-  
-  
-  
+
+
+
+
   visualizeDijkstra() {
-    this.setState({isDisabled: true})
-    const {grid} = this.state;
+    this.setState({ isDisabled: true })
+    const { grid } = this.state;
     const startNode = grid[this.state.startNodeY][this.state.startNodeX];
     const finishNode = grid[this.state.endNodeY][this.state.endNodeX];
     const visitedNodesInOrder = dijkstra(grid, startNode, finishNode);
     const nodesInShortestPathOrder = getNodesInShortestPathOrder(finishNode);
     this.animateDijkstra(visitedNodesInOrder, nodesInShortestPathOrder);
   }
-   reset() {
+  reset() {
     window.location.reload(false);
   }
   render() {
-    const {grid, mouseIsPressed} = this.state;
+    const { grid, mouseIsPressed } = this.state;
     return (
       <>
-      <div className='Nav'>
-        <div className='buttons'>
-          <img  src={require('../docs/Greygo.png')} alt="" width = "80" height = "auto"/>
-          <div>
-            <button className='viz' onClick={() => this.visualizeDijkstra()}>
-             Visualize Dijkstra's 
+        <div className='Nav'>
+          <div className='buttons'>
+            <button className='viz' onClick={() => this.visualizeDijkstra()} >
+              Start
             </button>
-          <div class="tooltip"><FontAwesomeIcon icon={faExclamationCircle} />
-            <span className="tooltiptext">You can create obstacles by clicking and holding down the mouse on the grid</span>
+            <img src={logo} alt="Logo" height="80em" width="auto" />
+            <div>
+              <button className='reload' onClick={() => this.reset()}>
+                Reset
+              </button>
+              <div class="tooltip"><FontAwesomeIcon icon={faExclamationCircle} />
+                <span className="tooltiptext">You can create obstacles by clicking and holding down the mouse on the grid</span>
+              </div>
+            </div>
           </div>
         </div>
-          <button className='reload'  onClick={() => this.reset()}>
-            Reset
-          </button>
-        </div>
-      </div>
-      <div className='inlineInput'>
-        <div className='startAxis'>
+        <div className='inlineInput'>
+          <div className='startAxis'>
             <form className=''>
               <label className='labelStartX'>
-                <input  disabled={this.state.isDisabled} placeholder='X' id="myStartInputX" type='number' max="49" min="0" onkeyup="if(value<0)value=0;" onChange={this.handleChange}/>
+                <input disabled={this.state.isDisabled} placeholder='X' id="myStartInputX" type='number' max="49" min="0" onkeyup="if(value<0)value=0;" onChange={this.handleChange} />
               </label>
             </form>
             <form>
               <label className='labelStartY'>
-                <input disabled={this.state.isDisabled} placeholder='Y'  id="myStartInputY" type='number' max="19" min="0" onkeyup="if(value<0)value=0;" onChange={this.handleChange}/>
+                <input disabled={this.state.isDisabled} placeholder='Y' id="myStartInputY" type='number' max="19" min="0" onkeyup="if(value<0)value=0;" onChange={this.handleChange} />
               </label>
-            </form> 
-        </div> 
-        <div className='endAxis'>
+            </form>
+          </div>
+          <div className='endAxis'>
             <form>
               <label className='labelX'>
-                <input disabled={this.state.isDisabled} placeholder='X'  id="myEndInputX" type='number' max="49" min="0" onkeyup="if(value<0)value=0;" onChange={this. handleEndChange}/>
+                <input disabled={this.state.isDisabled} placeholder='X' id="myEndInputX" type='number' max="49" min="0" onkeyup="if(value<0)value=0;" onChange={this.handleEndChange} />
               </label>
             </form>
             <form>
               <label className='labelY'>
-                <input disabled={this.state.isDisabled} placeholder='Y'  id="myEndInputY" type='number' max="19" min="0" onkeyup="if(value<0)value=0;" onChange={this.handleEndChange}/>
+                <input disabled={this.state.isDisabled} placeholder='Y' id="myEndInputY" type='number' max="19" min="0" onkeyup="if(value<0)value=0;" onChange={this.handleEndChange} />
               </label>
             </form>
           </div>
-         </div>
+        </div>
         <div className="grid">
           {grid.map((row, rowIdx) => {
             return (
               <div className='row' key={rowIdx}>
                 {row.map((node, nodeIdx) => {
-                  const {row, col, isFinish, isStart, isWall} = node;
+                  const { row, col, isFinish, isStart, isWall } = node;
                   return (
                     <Node
                       key={nodeIdx}
@@ -193,7 +194,7 @@ export default class PathfindingVisualizer extends Component {
                       }
                       onMouseUp={() => this.handleMouseUp()}
                       row={row}>
-                      </Node>
+                    </Node>
                   );
                 })}
               </div>
