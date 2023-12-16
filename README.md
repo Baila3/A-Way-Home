@@ -7,9 +7,9 @@ It utilizes dijkstra's algorithm to go from the start node to the end node and i
 
 ### Screenshots
 
-!["Screenshot of the main page"](https://github.com/Baila3/A-Way-Home/blob/master/src/docs/ScreenA-Way-Home.png)
-!["Screenshot of the main page in action"](https://github.com/Baila3/A-Way-Home/blob/master/src/docs/InAction.png)
-!["Demo of The app"](https://github.com/Baila3/A-Way-Home/blob/master/src/docs/WayHome.gif)
+!["Screenshot of the main page"](https://github.com/Baila3/A-Way-Home/blob/master/src/docs/Display2.png)
+!["Screenshot of the main page in action"](https://github.com/Baila3/A-Way-Home/blob/master/src/docs/active.png)
+!["Demo of The app"](https://github.com/Baila3/A-Way-Home/blob/master/src/docs/Vid1.gif)
 
 ## Tech Stack
 
